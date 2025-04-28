@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwf1t5fxjsqej"]
+
+[ext_resource type="Script" uid="uid://bie6quedmrxi2" path="res://scripts/zona_de_morte.gd" id="1_8q358"]
+
+[node name="Zona de morte" type="Area2D"]
+collision_mask = 5
+script = ExtResource("1_8q358")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

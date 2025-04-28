@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://rdys1h74io4t"]
+
+[ext_resource type="Script" uid="uid://c0vftngwlokp" path="res://scripts/torradeira.gd" id="1_kuenm"]
+[ext_resource type="Texture2D" uid="uid://cm2crov2ngdup" path="res://assents/sprites/torradeira.png" id="1_nfxq1"]
+[ext_resource type="PackedScene" uid="uid://bwf1t5fxjsqej" path="res://scenes/zona_de_morte.tscn" id="2_kuenm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knhip"]
+size = Vector2(20, 15)
+
+[node name="torradeira" type="Node2D"]
+script = ExtResource("1_kuenm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -9)
+texture = ExtResource("1_nfxq1")
+
+[node name="Zona de morte" parent="Sprite2D" instance=ExtResource("2_kuenm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Zona de morte"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_knhip")
+
+[node name="RayCastesquerda" type="RayCast2D" parent="."]
+position = Vector2(0, -7)
+target_position = Vector2(-15, 0)
+collision_mask = 7
+
+[node name="RayCastdireita" type="RayCast2D" parent="."]
+position = Vector2(0, -7)
+target_position = Vector2(17, 0)
+collision_mask = 7

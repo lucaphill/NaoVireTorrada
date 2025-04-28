@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://2eus3qei62mv"]
+
+[ext_resource type="Texture2D" uid="uid://5ohlnqtron3f" path="res://assents/sprites/pão.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dy2s4mboxjbl0" path="res://scripts/player.gd" id="1_g2els"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sweqy"]
+size = Vector2(15, 10.875)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(22, 0, 22, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqtel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3pqv")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 3.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 5
+script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 5
+position = Vector2(0, -5.5625)
+shape = SubResource("RectangleShape2D_sweqy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -8)
+sprite_frames = SubResource("SpriteFrames_hqtel")
+animation = &"parado"
+autoplay = "parado"
+frame_progress = 0.196295
